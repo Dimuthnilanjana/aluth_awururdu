@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>අලුත් අවුරුද්දේ සද්ද අහන්න</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f0f0f0; /* Background color */
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .image-container {
+      border: 5px solid #333;
+      border-radius: 15px;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: white; /* Image box background color */
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 10px;
+      height: 200px; /* Set a fixed height for all images */
+      object-fit: cover; /* Ensure images cover the whole container */
+    }
+    .btn {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="image-container text-center">
+        <img src="koha.jpg" alt="Image 1">
+        <button id="play-btn-1" class="btn btn-primary">කොහෝ කොහෝ</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="image-container text-center">
+        <img src="doon.jpg" alt="Image 2">
+        <button id="play-btn-2" class="btn btn-primary">ඩෝං පටෝං</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audio1">
+  <source src="koha.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio id="audio2">
+  <source src="doon.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    var audio1 = document.getElementById('audio1');
+    var audio2 = document.getElementById('audio2');
+    var isPlaying1 = false;
+    var isPlaying2 = false;
+
+    $('#play-btn-1').click(function() {
+      if (isPlaying1) {
+        audio1.pause();
+        isPlaying1 = false;
+      } else {
+        audio2.pause();
+        audio1.currentTime = 0;
+        audio1.play();
+        isPlaying1 = true;
+        isPlaying2 = false;
+      }
+    });
+
+    $('#play-btn-2').click(function() {
+      if (isPlaying2) {
+        audio2.pause();
+        isPlaying2 = false;
+      } else {
+        audio1.pause();
+        audio2.currentTime = 0;
+        audio2.play();
+        isPlaying2 = true;
+        isPlaying1 = false;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
